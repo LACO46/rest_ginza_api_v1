@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  rest_ginza_api:
+    build:
+      context: .
+    tty: true
+    stdin_open: true
+    image: rest_ginza_images
+    working_dir: /app
+    volumes:
+      - ./app/:/app
+    container_name: rest_ginza_api
