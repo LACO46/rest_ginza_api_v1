@@ -1,6 +1,6 @@
 version: "3.5"
 services:
-  rest_ginza_container:
+  rest_ginza_api:
     build:
       context: .
     tty: true
@@ -9,4 +9,4 @@ services:
     working_dir: /app
     volumes:
       - ./app/:/app
-    container_name: rest_ginza_container
+    container_name: rest_ginza_api
