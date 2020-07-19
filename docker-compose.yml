@@ -10,3 +10,5 @@ services:
     volumes:
       - ./app/:/app
     container_name: rest_ginza_api
+    ports:
+      - 8080:80
