@@ -4,7 +4,6 @@ from flask import Flask, jsonify, request
 from werkzeug import local
 
 # impor file
-
 from logics import morphological_analysis_logics
 
 

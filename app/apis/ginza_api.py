@@ -16,3 +16,11 @@ class ginza_api_base:
         return {
             'result': doc.sents
         }
+
+    def ginza_vector(self, word: str) -> GinzaApiBaseResultModel:
+        nlp = spacy.load('ja_ginza')
+        doc = nlp(word)
+
+        return {
+            'result': doc
+        }
