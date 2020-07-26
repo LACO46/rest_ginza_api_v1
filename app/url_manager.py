@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request
 
 # import file
-from controllers import (test_controller)
+from controllers import (test_controller, morphological_analysis_controllers)
 
 
 class urls:
@@ -13,3 +13,8 @@ class urls:
     def index():
         test = test_controller.test()
         return test.ginza_test()
+
+    @app.route('/v1/morphological-analysis/', methods=['POST'])
+    def morphological_analysis():
+        morphological_analysis_controller = morphological_analysis_controllers.morphological_analysis_controller()
+        return morphological_analysis_controller.morphological_analysis(request)
