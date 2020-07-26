@@ -7,13 +7,15 @@ from apis import ginza_api
 
 @dataclass
 class GinzaApiResultModel:
-    count: int
-    orth: str
-    lemma: str
-    pos: str
-    tag: [str]
-    dep: str
-    head: str
+    count: int        # トークン番号
+    text: str         # テキスト
+    reading: str      # 読みカナ
+    lemma: str        # 基本形
+    pos: str          # 品詞
+    tag: [str]        # 品詞詳細
+    dep: str          # トークンと各トークンの依存関係
+    head: str         # 依存関係の親のトークン
+    inf: str          # 活用情報
 
 
 @dataclass
@@ -34,12 +36,14 @@ class morphological_analysis_logic:
             for token in sent:
                 result: GinzaApiResultModel = {
                     'count': token.i,
-                    'orth': token.orth_,
+                    'text': token.text,
+                    'reading': token._.reading,
                     'lemma': token.lemma_,
                     'pos': token.pos_,
                     'tag': token.tag_.split("-"),
                     'dep': token.dep_,
-                    'head': token.head.i
+                    'head': token.head.i,
+                    'inf': token._.inf
                 }
                 ginza_api_result.append(result)
 
