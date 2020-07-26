@@ -14,7 +14,7 @@ class GinzaApiResultModel:
     pos: str          # 品詞
     tag: [str]        # 品詞詳細
     dep: str          # トークンと各トークンの依存関係
-    head: str         # 依存関係の親のトークン
+    head: int         # 依存関係の親のトークン
     inf: str          # 活用情報
 
 
