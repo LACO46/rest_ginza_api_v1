@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import spacy
 
 
+# ginzaのテストのレスポンスの型
 @dataclass
 class GinzaApiResultModel:
     count: int
@@ -14,15 +15,22 @@ class GinzaApiResultModel:
     head: str
 
 
+# ginzaのテストのクラス
 class test:
+    # ginzaのテストを行う関数
     def ginza_test(self, word: str) -> [GinzaApiResultModel]:
+        # ginzaの形態素解析の結果を返す関数
         nlp = spacy.load('ja_ginza')
+
+        # wordをginzaに読み込ませる
         doc = nlp(word)
 
         ginza_result = []
 
+        # ginzaの形態素解析の結果を取得
         for sent in doc.sents:
             for token in sent:
+                # ginzaのテストのレスポンスの型に合わせて形態素解析の結果を格納
                 result: GinzaApiResultModel = {
                     'count': token.i,
                     'orth': token.orth_,

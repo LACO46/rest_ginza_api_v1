@@ -10,6 +10,7 @@ from logics import word_cos_logics
 class word_cos_controller():
     def word_cos(self, request: local.LocalProxy):
         json = request.json
+        # 変数を定義
         word_cos_logic = word_cos_logics.word_cos_logic()
 
         # jsonファイルが正常であることを確認
