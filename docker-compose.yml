@@ -12,3 +12,4 @@ services:
     container_name: rest_ginza_api
     ports:
       - 8080:80
+    command: python3 main.py
