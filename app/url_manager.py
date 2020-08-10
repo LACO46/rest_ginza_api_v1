@@ -6,7 +6,8 @@ from controllers import (
     test_controller,
     morphological_analysis_controllers,
     word_number_array_controllers,
-    word_cos_controllers)
+    word_cos_controllers,
+    update_dict_controllers)
 
 
 class urls:
@@ -45,3 +46,11 @@ class urls:
 
         # レスポンスを返す
         return word_cos_controller.word_cos(request)
+
+    @app.route('/v1/update-dict/', methods=['GET'])
+    def update_dict():
+        # 変数
+        update_dict_controller = update_dict_controllers.update_dict_controller()
+
+        # レスポンスを返す
+        return update_dict_controller.update_dict()
