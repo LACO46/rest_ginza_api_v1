@@ -8,7 +8,7 @@ from logics import add_dict_logics
 
 
 class add_dict_controller:
-    # 形態素解析の辞書の更新をするコントローラ
+    # 形態素解析の辞書単語を追加するコントローラ
     def add_dict(self, request: local.LocalProxy):
         # 変数を定義
         json = request.json
@@ -26,9 +26,11 @@ class add_dict_controller:
                                            'a_unit_division_information',
                                            'b_unit_division_information', 'unused'}
 
+        # リクエストされたキーを確認
         if not (key_check_result):
             return jsonify({'message': 'request json is injustice'}), 500
 
+        # 辞書に単語を追加
         is_add_dict_success = add_dict_logic.add_dict(req=json)
         if not (is_add_dict_success):
             return "add dict faild"

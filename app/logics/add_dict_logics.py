@@ -27,11 +27,11 @@ class RequestModel:
 
 
 class add_dict_logic:
-    # 形態素解析の辞書の更新をするロジック
+    # 形態素解析の辞書単語を追加するロジック
     def add_dict(self, req: RequestModel) -> bool:
+        # 変数を定義
         text = text_api.text()
         compilation_dict_base = compilation_dict.compilation_dict_base()
-
         add_content = "\n{0},{1},{2},{3},{0},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16}".format(
             req['headline'],
             req['left_connection_id'],
@@ -51,12 +51,16 @@ class add_dict_logic:
             req['b_unit_division_information'],
             req['unused'])
 
+        # 辞書の元となるCSVに単語を追記
         is_content_add_success = text.add_content_api(
             file_path='user_dict/user_dict.csv', content=add_content)
+        # CSVに単語を追記できたかを確認
         if not (is_content_add_success):
             return False
 
+        # 辞書をコンパイルする
         is_compilation_success = compilation_dict_base.compilation_dict()
+        # 辞書をコンパイルできたかを確認
         if not (is_compilation_success):
             return False
 
