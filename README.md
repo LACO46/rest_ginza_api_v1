@@ -183,3 +183,57 @@ curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POS
   "word2": "おむすび"
 }
 ```
+
+## 辞書の更新
+
+### リクエスト
+
+```
+curl -X GET http://localhost:8080/v1/update-dict/
+```
+
+### リクエストの結果について
+
+- 成功の場合
+
+```
+{
+  "is_succeed": true,
+  "status_code": 200
+}
+```
+
+- 失敗の場合
+
+```
+{
+  "is_succeed": false,
+  "status_code": 500
+}
+```
+
+## 辞書に単語を追加
+
+### リクエスト
+
+```
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"headline":"<headline>", "left_connection_id":"<left_connection_id>", "right_connection_id":"<right_connection_id>", "cost":"<cost>", "part_of_speech_one":"<part_of_speech_one>", "part_of_speech_two":"<part_of_speech_two>", "part_of_speech_three":"<part_of_speech_three>", "part_of_speech_four":"<part_of_speech_four>", "part_of_speech_advanced_type":"<part_of_speech_advanced_type>", "part_of_speech_inflected_form":"<part_of_speech_inflected_form>", "reading":"<reading>", "normalized_notation":"<normalized_notation>", "dictionary_id":"<dictionary_id>", "split_type":"<split_type>", "a_unit_division_information":"<a_unit_division_information>", "b_unit_division_information":"<b_unit_division_information>", "unused":"<unused>"}'  http://localhost:8080/v1/add-dict/
+```
+
+- 各変数の詳細については以下を参照
+
+https://github.com/WorksApplications/Sudachi/blob/develop/docs/user_dict.md
+
+### リクエストの結果について
+
+- 成功の場合
+
+```
+add dict success
+```
+
+- 失敗の場合
+
+```
+add dict faild
+```
